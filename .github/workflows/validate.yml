@@ -25,23 +25,23 @@ jobs:
         node: [lts/-1, lts/*, latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: â¬ï¸ Checkout repo
+      - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
-      - name: â Setup node
+      - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
-      - name: ð¥ Download deps
+      - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
 
-      - name: â¶ï¸ Run validate script
+      - name: ▶️ Run validate script
         run: npm run validate
 
-      - name: â¬ï¸ Upload coverage report
+      - name: ⬆️ Upload coverage report
         uses: codecov/codecov-action@v3
 
   build-release-artifact:
@@ -57,7 +57,7 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: ⎔ Setup node
+      - name: ⎄ Setup node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: lts/*
@@ -95,7 +95,7 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: ⎔ Setup node
+      - name: ⎄ Setup node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
