@@ -51,7 +51,7 @@ jobs:
       contents: read
     if:
       ${{ github.repository == 'kentcdodds/kcd-scripts' &&
-      contains('refs/heads/main,refs/heads/beta,refs/heads/next,refs/heads/alpha',
+      contains('refs/heads/main,refs/heads/beta,refs/heads/next,refs/heads/next-major,refs/heads/alpha',
       github.ref) && github.event_name == 'push' }}
     steps:
       - name: ⬇️ Checkout repo
@@ -89,7 +89,7 @@ jobs:
       NPM_CONFIG_PROVENANCE: 'true'
     if:
       ${{ github.repository == 'kentcdodds/kcd-scripts' &&
-      contains('refs/heads/main,refs/heads/beta,refs/heads/next,refs/heads/alpha',
+      contains('refs/heads/main,refs/heads/beta,refs/heads/next,refs/heads/next-major,refs/heads/alpha',
       github.ref) && github.event_name == 'push' }}
     steps:
       - name: ⬇️ Checkout repo
