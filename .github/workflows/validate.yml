@@ -75,7 +75,7 @@ jobs:
           name: npm-package-dist
           path: dist
           if-no-files-found: error
-          retention-days: 1
+          retention-days: 7
 
   release:
     needs: build-release-artifact
@@ -98,7 +98,7 @@ jobs:
       - name: ⎄ Setup node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 24
+          node-version: lts/*
           registry-url: https://registry.npmjs.org
           package-manager-cache: false
 
