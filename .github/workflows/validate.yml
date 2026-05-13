@@ -28,23 +28,23 @@ jobs:
         node: [lts/-1, lts/*, latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout repo
+      - name: ⬇️ Checkout repo
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Setup node
+      - name: ⎔ Setup node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Download deps
+      - name: 📥 Download deps
         uses: bahmutov/npm-install@20216767ca67f0f7b4d095dc5859c5700a6581cb # v1
         with:
           useLockFile: false
 
-      - name: Run validate script
+      - name: ▶️ Run validate script
         run: npm run validate
 
-      - name: Upload coverage report
+      - name: ⬆️ Upload coverage report
         uses: codecov/codecov-action@ab904c41d6ece82784817410c45d8b8c02684457 # v3
 
   build-release-artifact:
@@ -54,10 +54,10 @@ jobs:
       contents: read
     if: ${{ github.repository == 'kentcdodds/kcd-scripts' && github.event_name == 'push' }}
     steps:
-      - name: Checkout repo
+      - name: ⬇️ Checkout repo
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Setup node
+      - name: ⎔ Setup node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: lts/*
@@ -65,7 +65,7 @@ jobs:
       - name: Install deps
         run: npm install --ignore-scripts
 
-      - name: Run build script
+      - name: 🏗 Run build script
         run: npm run build
 
       - name: Upload package artifact
@@ -88,10 +88,10 @@ jobs:
       NPM_CONFIG_PROVENANCE: 'true'
     if: ${{ github.repository == 'kentcdodds/kcd-scripts' && github.event_name == 'push' }}
     steps:
-      - name: Checkout repo
+      - name: ⬇️ Checkout repo
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Setup node
+      - name: ⎔ Setup node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: lts/*
@@ -103,7 +103,7 @@ jobs:
           name: npm-package-dist
           path: dist
 
-      - name: Release
+      - name: 🚀 Release
         uses: cycjimmy/semantic-release-action@ba330626c4750c19d8299de843f05c7aa5574f62 # v5.0.2
         with:
           semantic_version: 25
